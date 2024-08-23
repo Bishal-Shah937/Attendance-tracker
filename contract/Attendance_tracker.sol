@@ -21,13 +21,13 @@ contract AttendanceVerification {
         rewardAmount = _rewardAmount;
     }
 
-    // Function to mark attendance for a student
+    
     function markAttendance(address student) external onlyOwner {
         attendanceRecords[student]++;
         emit AttendanceMarked(student);
     }
 
-    // Function to claim rewards based on attendance
+    
     function claimReward() external {
         require(attendanceRecords[msg.sender] > 0, "No attendance recorded");
         require(!hasClaimedReward[msg.sender], "Reward already claimed");
@@ -39,12 +39,12 @@ contract AttendanceVerification {
         emit RewardClaimed(msg.sender, reward);
     }
 
-    // Function to set or update reward amount
+    
     function setRewardAmount(uint256 _rewardAmount) external onlyOwner {
         rewardAmount = _rewardAmount;
     }
 
-    // Function to receive Ether
+    
     receive() external payable {}
 
     // Function to withdraw contract balance (for owner)
